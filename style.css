@@ -1,0 +1,274 @@
+:root {
+  --primary: #111;
+  --accent: #fdd835;
+  --light: #fff;
+  --dark: #000;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--light);
+  color: var(--primary);
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background: var(--dark);
+  color: var(--light);
+}
+header {
+      background: var(--dark);
+      color: var(--light);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      margin-left: 1rem;
+      font-weight: bold;
+    }
+
+    .dark-toggle {
+      background: var(--accent);
+      color: #000;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #custom-loader {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      z-index: 9999;
+    }
+
+    .bar-container {
+      width: 200px;
+      height: 30px;
+      background: #333;
+      margin-bottom: 2rem;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      background: white;
+    }
+
+    .countdown {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 2.5rem;
+      font-family: monospace;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60vh;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      font-size: 3rem;
+      text-shadow: 1px 1px 5px #000;
+      transition: background-image 1s ease-in-out;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin: 2rem 0;
+    }
+
+    .slider {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .slide {
+      min-width: 100%;
+      transition: transform 0.5s ease-in-out;
+      display: none;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .dots span {
+      height: 10px;
+      width: 10px;
+      margin: 0 5px;
+      display: inline-block;
+      background-color: #bbb;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dots span.active {
+      background-color: #333;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 1rem;
+      gap: 1rem;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-item {
+      min-width: 250px;
+      background: #eee;
+      padding: 1rem;
+      border-radius: 10px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .carousel-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-mode .carousel-item {
+      background: #222;
+      color: white;
+    }
+
+    .button {
+      position: relative;
+      overflow: hidden;
+      background: var(--accent);
+      color: black;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .ripple {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple-animation 0.6s linear;
+      pointer-events: none;
+    }
+
+    @keyframes ripple-animation {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--dark);
+      color: var(--light);
+    }
+/* ...continue with loader, header, hero, carousel, button, modal etc... */
+
+.carousel-item img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav a {
+    margin: 0.5rem 0;
+  }
+
+  .hero {
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .carousel {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel-item {
+    min-width: 80%;
+    width: 90%;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+}
+
